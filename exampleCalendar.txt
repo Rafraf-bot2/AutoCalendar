@@ -1,0 +1,4 @@
+#FORMAT
+# DateDebut DateFin Couleur
+# yyyy-mm-dd yyyy-mm-dd colorId
+  2022-11-03 22-11-07 11
