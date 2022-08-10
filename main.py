@@ -1,6 +1,5 @@
 from __future__ import print_function
 
-import datetime
 import os.path
 
 from google.auth.transport.requests import Request
@@ -12,15 +11,15 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# If modifying these scopes, delete the file token.json.
+# If modifying scopes, delete the file token.json.
 SCOPES = ['https://www.googleapis.com/auth/calendar']
 
 def createEvent(period):
-
-    if period[2] == '11':
-        Infos = ['Session Etudes', 'Faut etudier mon gars']
-    else :
-        Infos = ['Session Travail', 'Faut bosser mon gars']
+    Infos = (
+            ['Session Etudes', 'Faut etudier mon gars'] 
+            if period[2] == '11' 
+            else ['Session Travail', 'Faut bosser mon gars']
+        )
     
     event = {
             'summary': Infos[0],
@@ -39,12 +38,8 @@ def createEvent(period):
             'colorId' : period[2]
         }
     return event
-    
 
 def main():
-    """
-    
-    """
     apiKey = os.environ.get("API_KEY")
     creds = None
     # The file token.json stores the user's access and refresh tokens, and is
